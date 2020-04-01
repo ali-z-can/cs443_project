@@ -1,0 +1,1 @@
+insert into link (id,user_id,short_url,long_url,number_of_clicks,port) values (1,1,'helloshort','hellolong',1,90)
