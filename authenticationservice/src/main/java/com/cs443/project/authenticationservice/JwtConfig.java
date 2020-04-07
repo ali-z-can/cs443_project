@@ -15,7 +15,7 @@ public class JwtConfig {
     @Value("${security.jwt.expiration:#{24*60*60}}")
     private int expiration;
 
-    @Value("${security.jwt.secret:JwtSecretKey}")
+    @Value("u8x/A?D*G-KaPdSgVkYp3s6v9y$B&E)H+MbQeThWmZq4t7w!z%C*F-JaNcRfUjXn")
     private String secret;
 
     public String getUri() {

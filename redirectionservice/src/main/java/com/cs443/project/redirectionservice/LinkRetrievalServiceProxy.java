@@ -5,11 +5,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "netflix-zuul-api-gateway-server")
+@FeignClient(name = "inner-gateway")
 @RibbonClient(name = "link-retrieval-service")
 public interface LinkRetrievalServiceProxy {
 
-    @GetMapping("/link-retrieval/{short_url}")
+    @GetMapping("/link-retrieval-service/link-retrieval/{short_url}")
     public LinkRedirectionBean retrieveExchangeValue(@PathVariable String short_url);
 
 }
