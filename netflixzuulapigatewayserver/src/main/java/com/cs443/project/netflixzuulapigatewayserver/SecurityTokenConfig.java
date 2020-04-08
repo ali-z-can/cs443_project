@@ -38,8 +38,4 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
     }
 
-    @Bean
-    public JwtConfig jwtConfig() {
-        return new JwtConfig();
-    }
 }

@@ -2,6 +2,7 @@ package com.cs443.project.netflixzuulapigatewayserver;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,6 +46,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         // 3. Get the token
         String token = header.replace(jwtConfig.getPrefix(), "");
 
+
         try {	// exceptions might be thrown in creating the claims if for example the token is expired
 
             // 4. Validate the token
@@ -53,8 +55,13 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
                     .parseClaimsJws(token)
                     .getBody();
 
+
             String username = claims.getSubject();
             if(username != null) {
+
+
+
+
                 @SuppressWarnings("unchecked")
                 List<String> authorities = (List<String>) claims.get("authorities");
 

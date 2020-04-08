@@ -6,10 +6,13 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,8 +24,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter   {
+
+    private MyUserDetailsService userDetailsService;
 
     // We use auth manager to validate the user credentials
     private AuthenticationManager authManager;
@@ -45,13 +52,16 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         try {
 
             // 1. Get credentials from request
-            UserCredentials creds = new ObjectMapper().readValue(request.getInputStream(), UserCredentials.class);
+            User creds = new ObjectMapper().readValue(request.getInputStream(), User.class);
 
             // 2. Create auth object (contains credentials) which will be used by auth manager
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                    creds.getUsername(), creds.getPassword(), Collections.emptyList());
+                    creds.getUsername(), creds.getPassword());
 
             // 3. Authentication manager authenticate the user, and use UserDetialsServiceImpl::loadUserByUsername() method to load the user.
+            System.out.println("in attempt");
+            System.out.println(creds.getUsername());
+            System.out.println(creds.getPassword());
             return authManager.authenticate(authToken);
 
         } catch (IOException e) {
@@ -59,11 +69,29 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         }
     }
 
+
+
     // Upon successful authentication, generate a token.
     // The 'auth' passed to successfulAuthentication() is the current authenticated user.
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
+
+        System.out.println("in onSuccess");
+        System.out.println(auth.getName());
+        if(userDetailsService==null){
+            ServletContext servletContext = request.getServletContext();
+            WebApplicationContext webApplicationContext =  WebApplicationContextUtils.getWebApplicationContext(servletContext);
+            userDetailsService = webApplicationContext.getBean(MyUserDetailsService.class);
+        }
+        System.out.println(userDetailsService==null);
+        final User user = userDetailsService.loadUserByUsername(auth.getName());
+
+
+
+        final String jwt = jwtConfig.generateToken(user);
+
+        System.out.println(jwt);
 
         Long now = System.currentTimeMillis();
         String token = Jwts.builder()
@@ -78,28 +106,8 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                 .compact();
 
         // Add token to header
-        response.addHeader(jwtConfig.getHeader(), jwtConfig.getPrefix() + token);
+        response.addHeader(jwtConfig.getHeader(), jwtConfig.getPrefix() + jwt);
     }
 
-    // A (temporary) class just to represent the user credentials
-    private static class UserCredentials {
-        private String username, password;
-        // getters and setters ...
 
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-    }
 }

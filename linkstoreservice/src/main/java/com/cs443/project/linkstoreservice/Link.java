@@ -1,4 +1,4 @@
-package com.cs443.project.linkretrievalservice;
+package com.cs443.project.linkstoreservice;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
