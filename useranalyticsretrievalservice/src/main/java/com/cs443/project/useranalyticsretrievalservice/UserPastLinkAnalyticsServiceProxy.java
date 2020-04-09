@@ -1,15 +1,17 @@
 package com.cs443.project.useranalyticsretrievalservice;
 
+
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name="inner-gateway")
-@RibbonClient(name = "link-retrieval-service")
-public interface UserLinkAnalyticsServiceProxy {
+@RibbonClient(name = "user-past-link-analytics-retrieval-service")
+public interface UserPastLinkAnalyticsServiceProxy {
 
-    @GetMapping("/link-retrieval-service/links-retrieval/user/{id}")
-    public UserLinkAnalyticsBean retrieveUserLinkAnalytics(@PathVariable Long userId);
+
+    @GetMapping("/user-past-link-analytics-retrieval-service/user/{userid}/get-past-analytics")
+    public UserPastLinkAnalyticsBean retrievePastUserLinkAnalytics(@PathVariable Long id);
 
 }
