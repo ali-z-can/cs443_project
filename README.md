@@ -16,5 +16,11 @@ cs443_project
 | Zipkin Distributed Tracing Server | 9411 |
 | Inner-gateway | 8762 |
 | user-analytics-service | 14000 |
+|user-past-link-analytics-retrieval-service| 14100 |
+|link-analytics-service| 14200 |
+|user-past-link-analytics-rearrangement-service| 14300 |
+|link-deletion-service| 14400 |
+
+
 
 
