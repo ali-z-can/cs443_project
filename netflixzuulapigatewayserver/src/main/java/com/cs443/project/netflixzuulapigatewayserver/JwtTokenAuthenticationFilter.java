@@ -12,6 +12,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,11 +32,14 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         // 1. get the authentication header. Tokens are supposed to be passed in the authentication header
         String header = request.getHeader(jwtConfig.getHeader());
 
+        System.out.println("request = " + header);
+
         // 2. validate the header and check the prefix
         if(header == null || !header.startsWith(jwtConfig.getPrefix())) {
             chain.doFilter(request, response);  		// If not valid, go to the next filter.
             return;
         }
+
 
         // If there is no token provided and hence the user won't be authenticated.
         // It's Ok. Maybe the user accessing a public path or asking for a token.
@@ -47,29 +51,49 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         String token = header.replace(jwtConfig.getPrefix(), "");
 
 
+
+        System.out.println("token = " + token);
+
         try {	// exceptions might be thrown in creating the claims if for example the token is expired
 
+
+            System.out.println("IM HERE BITCHEEZZZZZZ");
             // 4. Validate the token
+
+
             Claims claims = Jwts.parser()
-                    .setSigningKey(jwtConfig.getSecret().getBytes())
+                    .setSigningKey(jwtConfig.getSecret())
                     .parseClaimsJws(token)
                     .getBody();
+            System.out.println("IM HERE BITCHEEZZZZZZ 2?2?2?");
 
+
+            System.out.println("claims= " + claims);
 
             String username = claims.getSubject();
+
+
             if(username != null) {
 
+
+                System.out.println("username = " + username);
 
 
 
                 @SuppressWarnings("unchecked")
                 List<String> authorities = (List<String>) claims.get("authorities");
 
+
                 // 5. Create auth object
                 // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
                 // It needs a list of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-                        username, null, authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+                        username, null,null);
+                       // authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+
+                System.out.println("error here YES ");
+
+
 
                 // 6. Authenticate the user
                 // Now, user is authenticated
