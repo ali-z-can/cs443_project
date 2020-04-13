@@ -22,7 +22,7 @@ public class LinkDeletionController {
     @Async
     @Scheduled(fixedRate = 2 * 1000 )
     public void delete(){
-        System.out.println("wololo");
+        //System.out.println("wololo");
         java.util.Date now = new java.util.Date();
         List<Link> links = repository.findAllByExpirationIsBefore(new java.sql.Date(now.getTime()));
         for(Link l : links){

@@ -16,6 +16,7 @@ public class Link {
     private String longUrl;
     private int numberOfClicks;
     private int port;
+    private Date expiration;
 
     public Link(Long userId, String shortUrl, String longUrl, int numberOfClicks, int port, Date expiration) {
         this.userId = userId;
@@ -34,7 +35,7 @@ public class Link {
         this.expiration = expiration;
     }
 
-    private Date expiration;
+
 
     public int getPort() {
         return port;
