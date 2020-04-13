@@ -3,6 +3,7 @@ package com.cs443.project.linkanalyticsservice;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 @Entity
 public class Link {
@@ -15,6 +16,26 @@ public class Link {
     private String longUrl;
     private int numberOfClicks;
     private int port;
+    private Timestamp expiration;
+
+    public Link(Long userId, String shortUrl, String longUrl, int numberOfClicks, int port, Timestamp expiration) {
+        this.userId = userId;
+        this.shortUrl = shortUrl;
+        this.longUrl = longUrl;
+        this.numberOfClicks = numberOfClicks;
+        this.port = port;
+        this.expiration = expiration;
+    }
+
+    public Timestamp getExpiration() {
+        return expiration;
+    }
+
+    public void setExpiration(Timestamp expiration) {
+        this.expiration = expiration;
+    }
+
+
 
     public int getPort() {
         return port;
@@ -68,10 +89,4 @@ public class Link {
         this.numberOfClicks = numberOfClicks;
     }
 
-    public Link(Long userId, String shortUrl, String longUrl, int numberOfClicks) {
-        this.userId = userId;
-        this.shortUrl = shortUrl;
-        this.longUrl = longUrl;
-        this.numberOfClicks = numberOfClicks;
-    }
 }

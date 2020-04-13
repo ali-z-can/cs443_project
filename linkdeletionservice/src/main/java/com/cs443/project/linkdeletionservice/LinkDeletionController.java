@@ -20,7 +20,7 @@ public class LinkDeletionController {
     LinkRepository repository;
 
     @Async
-    @Scheduled(fixedRate = 2 * 1000 )
+    @Scheduled(fixedRate = 2 * 1000 * 60)
     public void delete(){
         System.out.println("Im working");
         java.util.Date now = new java.util.Date();

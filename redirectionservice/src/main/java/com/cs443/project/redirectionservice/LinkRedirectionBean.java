@@ -2,7 +2,7 @@ package com.cs443.project.redirectionservice;
 
 public class LinkRedirectionBean {
 
-    private Long linkId;
+    private Long id;
     private Long userId;
     private String shortUrl;
     private String longUrl;
@@ -10,7 +10,7 @@ public class LinkRedirectionBean {
     private int port;
 
     public LinkRedirectionBean(Long linkId, Long userId, String shortUrl, String longUrl, Long numberOfClicks, int port) {
-        this.linkId = linkId;
+        this.id = linkId;
         this.userId = userId;
         this.shortUrl = shortUrl;
         this.longUrl = longUrl;
@@ -31,12 +31,12 @@ public class LinkRedirectionBean {
     }
 
 
-    public Long getLinkId() {
-        return linkId;
+    public Long getId() {
+        return id;
     }
 
-    public void setLinkId(Long linkId) {
-        this.linkId = linkId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getUserId() {
