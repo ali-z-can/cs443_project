@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface UserPastLinkAnalyticsServiceProxy {
 
 
-    @GetMapping("/user-past-link-analytics-retrieval-service/user/{userid}/get-past-analytics")
+    @GetMapping("/user-past-link-analytics-retrieval-service/user/{id}/get-past-analytics")
     public UserPastLinkAnalyticsBean retrievePastUserLinkAnalytics(@PathVariable Long id);
 
 }

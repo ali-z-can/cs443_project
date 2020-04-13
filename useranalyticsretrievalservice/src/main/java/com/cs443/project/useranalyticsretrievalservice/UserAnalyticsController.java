@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UserAnalyticsController {
 
@@ -16,8 +18,10 @@ public class UserAnalyticsController {
 
     @GetMapping("/user/{id}/user-analytics")
     public UserAnalyticsBean retrieve(@PathVariable Long id){
-        UserLinkAnalyticsBean userAnalyticsBean = proxy.retrieveUserLinkAnalytics(id);
-        UserPastLinkAnalyticsBean userPastLinkAnalyticsBean = pastProxy.retrievePastUserLinkAnalytics(id);
+         List<Link> userLinks = proxy.retrieveUserLinkAnalytics(id);
+         UserLinkAnalyticsBean userAnalyticsBean = new UserLinkAnalyticsBean(userLinks);
+
+         UserPastLinkAnalyticsBean userPastLinkAnalyticsBean = pastProxy.retrievePastUserLinkAnalytics(id);
 
         return new UserAnalyticsBean(userAnalyticsBean,userPastLinkAnalyticsBean);
 

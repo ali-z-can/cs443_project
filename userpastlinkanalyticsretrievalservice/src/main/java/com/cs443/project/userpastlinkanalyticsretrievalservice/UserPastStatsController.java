@@ -14,8 +14,11 @@ public class UserPastStatsController {
     UserRepository repository;
 
     @GetMapping("/user/{userid}/get-past-analytics")
-    public Collection<StatsOnly> retrieveOldStats(@PathVariable Long userid){
-        return repository.findByUserId(userid);
+    public StatsOnly retrieveOldStats(@PathVariable Long userid){
+
+       // Collection<StatsOnly> toRet = repository.findByUserId(userid);
+
+        return repository.findByUserId(userid).iterator().next();
     }
 
 }
