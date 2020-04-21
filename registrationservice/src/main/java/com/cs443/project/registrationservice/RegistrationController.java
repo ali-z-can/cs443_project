@@ -1,6 +1,7 @@
 package com.cs443.project.registrationservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class RegistrationController {
     @Autowired
     UserRepository repository;
 
+    @CrossOrigin
     @PostMapping("/registration")
     public User register(@RequestBody RegistrationJSON registrationJSON){
 

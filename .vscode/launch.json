@@ -1,0 +1,126 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AdminstatisticsserviceApplication<adminstatisticsservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.adminstatisticsservice.AdminstatisticsserviceApplication",
+            "projectName": "adminstatisticsservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AuthenticationserviceApplication<authenticationservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.authenticationservice.AuthenticationserviceApplication",
+            "projectName": "authenticationservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CommonserviceApplication<commonservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.commonservice.CommonserviceApplication",
+            "projectName": "commonservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LinkanalyticsserviceApplication<linkanalyticsservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.linkanalyticsservice.LinkanalyticsserviceApplication",
+            "projectName": "linkanalyticsservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LinkdeletionserviceApplication<linkdeletionservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.linkdeletionservice.LinkdeletionserviceApplication",
+            "projectName": "linkdeletionservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LinkretrievalserviceApplication<linkretrievalservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.linkretrievalservice.LinkretrievalserviceApplication",
+            "projectName": "linkretrievalservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LinkstoreserviceApplication<linkstoreservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.linkstoreservice.LinkstoreserviceApplication",
+            "projectName": "linkstoreservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-NetflixeurekanaimgserverApplication<netflixeurekanaimgserver>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.netflixeurekanaimgserver.NetflixeurekanaimgserverApplication",
+            "projectName": "netflixeurekanaimgserver"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-NetflixzuulapigatewayserverApplication<netflixzuulapigatewayserver>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.netflixzuulapigatewayserver.NetflixzuulapigatewayserverApplication",
+            "projectName": "netflixzuulapigatewayserver"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-RedirectionserviceApplication<redirectionservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.redirectionservice.RedirectionserviceApplication",
+            "projectName": "redirectionservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-RegistrationserviceApplication<registrationservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.registrationservice.RegistrationserviceApplication",
+            "projectName": "registrationservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SpringcloudconfigserverApplication<springcloudconfigserver>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.springcloudconfigserver.SpringcloudconfigserverApplication",
+            "projectName": "springcloudconfigserver"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UseranalyticsretrievalserviceApplication<useranalyticsretrievalservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.useranalyticsretrievalservice.UseranalyticsretrievalserviceApplication",
+            "projectName": "useranalyticsretrievalservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UserlinkanalyticsretrievalserviceApplication<userlinkanalyticsretrievalservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.userlinkanalyticsretrievalservice.UserlinkanalyticsretrievalserviceApplication",
+            "projectName": "userlinkanalyticsretrievalservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UserpastlinkanalyticsarrangementserviceApplication<userpastlinkanalyticsarrangementservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.userpastlinkanalyticsarrangementservice.UserpastlinkanalyticsarrangementserviceApplication",
+            "projectName": "userpastlinkanalyticsarrangementservice"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UserpastlinkanalyticsretrievalserviceApplication<userpastlinkanalyticsretrievalservice>",
+            "request": "launch",
+            "mainClass": "com.cs443.project.userpastlinkanalyticsretrievalservice.UserpastlinkanalyticsretrievalserviceApplication",
+            "projectName": "userpastlinkanalyticsretrievalservice"
+        }
+    ]
+}

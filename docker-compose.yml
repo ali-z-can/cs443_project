@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db: 
+    image: mariadb
+    container_name: 'db'
+    environment:
+     # - MYSQL_ROOT_PASSWORD=q1w2e3r4t5
+      - MYSQL_DATABASE=cs443
+    volumes:
+      - ./dbStartQ.sql:/docker-entrypoint-initdb.d/dbStartQ.sql:ro
+    ports:
+      - 8081:3306
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
