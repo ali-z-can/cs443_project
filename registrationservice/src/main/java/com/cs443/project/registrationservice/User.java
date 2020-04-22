@@ -15,15 +15,16 @@ public class User {
     private String password;
     private BigDecimal numberOfClicks;
     private BigDecimal numberOfDistinctLinks;
-
+    private String role;
     public User() {
     }
 
-    public User(String username, String password, BigDecimal numberOfClicks, BigDecimal numberOfDistinctLinks) {
+    public User(String username, String password, BigDecimal numberOfClicks, BigDecimal numberOfDistinctLinks,String role) {
         this.username = username;
         this.password = password;
         this.numberOfClicks = numberOfClicks;
         this.numberOfDistinctLinks = numberOfDistinctLinks;
+        this.role = role;
     }
 
     public Long getUserId() {
@@ -32,6 +33,14 @@ public class User {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void setRole(String role){
+        this.role = role;
+    }
+
+    public String getRole(){
+        return role;
     }
 
     public String getUsername() {

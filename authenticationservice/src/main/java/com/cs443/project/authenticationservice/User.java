@@ -19,17 +19,26 @@ public class User implements UserDetails {
     private String password;
     private BigDecimal numberOfClicks;
     private BigDecimal numberOfDistinctLinks;
+    private String role;
 
     public User() {
     }
 
-    public User(String username, String password, BigDecimal numberOfClicks, BigDecimal numberOfDistinctLinks) {
+    public User(String username, String password, BigDecimal numberOfClicks, BigDecimal numberOfDistinctLinks,String role) {
         this.username = username;
         this.password = password;
         this.numberOfClicks = numberOfClicks;
         this.numberOfDistinctLinks = numberOfDistinctLinks;
+        this.role = role;
     }
 
+    public void setRole(String role){
+        this.role = role;
+    }
+
+    public String getRole(){
+        return role;
+    }
     public Long getUserId() {
         return userId;
     }

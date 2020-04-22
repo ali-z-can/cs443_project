@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.*;
 
 @Service
 public class JwtConfig {
@@ -73,6 +74,9 @@ public class JwtConfig {
     public String generateToken(User user){
         Map<String,Object> claims = new HashMap<>();
         claims.put("id",user.getUserId());
+        List<String> roles = new ArrayList<>();
+        roles.add(user.getRole());
+        claims.put("role",roles);
         return createToken(claims,user.getUsername());
     }
 

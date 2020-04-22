@@ -22,7 +22,7 @@ public class RegistrationController {
 
         if(existingUser == null){
             User newUser = new User(registrationJSON.getUsername(),registrationJSON.getPassword(),
-                    new BigDecimal(0),new BigDecimal(0));
+                    new BigDecimal(0),new BigDecimal(0),"user");
             repository.save(newUser);
             return newUser;
         }
