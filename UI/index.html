@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Team Number 5</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://www.kidsmathgamesonline.com/images/pictures/numbers600/number5.jpg"
+                    alt="Team Number 5" height="250px" width="250px">
+            </div>
+            <div class="col-md-8">
+                <h1 style="font-size: 55px; font-family: 'Times New Roman'; color:darkolivegreen;"><strong>CS443 Cloud
+                        Computing and Mobile Applications</strong></h1>
+                <h2 style="font-family:Cambria; font-size:40px; color:darkolivegreen;">Team 5</h2>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+    <hr class="solid">
+
+    <nav class="navbar navbar-dark bg-success">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" onclick="home();">
+                    <strong>
+                        <p style="font-size: large;">TEAM5</p>
+                    </strong>
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="color: firebrick;" onclick="home();">
+                        <p style="font-size: large;">Home</p>
+                    </a></li>
+                <li><a href="#" style="color:firebrick;" onclick="aboutUs();">
+                        <p style="font-size: large;">About Us</p>
+                    </a></li>
+                <li><a href="#" style="color: firebrick;" onclick="contact();">
+                        <p style="font-size: large;">Contact</p>
+                    </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" style="color: firebrick;" onclick="sign();"><span class="glyphicon glyphicon-user"
+                            style="font-size: large;"> Sign-Up</span></a></li>
+                <li><a href="#" style="color: firebrick;" onclick="log();"><span class="glyphicon glyphicon-log-in"
+                            style="font-size: large;"> Login</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="log-in-form" style="display: none;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+                <h3>Login</h3>
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="username-login" type="text" class="form-control" name="username-login"
+                            placeholder="Username">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password-login" type="password" class="form-control" name="password-login"
+                            placeholder="Password">
+                    </div>
+                    <br>
+                </form>
+                <button type="button" class="btn btn-success" onclick="checkLogin();">Log In</button>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="sign-up-form" style="display: none;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h3>Sign Up Form</h3>
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" id="username-signup" class="form-control" name="username-signup"
+                            placeholder="Username">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" id="password-signup" class="form-control" name="password-signup"
+                            placeholder="Password" required>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" id="password-signup-again" class="form-control"
+                            name="password-signup-again" placeholder="Re-enter Password">
+                    </div>
+                    <br>
+                </form>
+                <button type="button" class="btn btn-success" onclick="checkSignup();">Sign Up</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="home-page" style="display: inline-block;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2>This webpage is made for CS443 Cloud Computing and Mobile Applications course project.</h2>
+                <br>
+                <h2>This website take your URL and transform them to a shortened URL. You can use shortened URLs to
+                    access
+                    original URLs. To start, you need to register.</h2>
+                <br>
+                <h2>This project is implemented by Team5.</h2>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid" id="about-us" style="display: none;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <img src="https://www.writeups.org/wp-content/uploads/Michael-Scofield-Prison-Break-Wentworth-Miller.jpg"
+                            alt="Burak" height="500" width="400" class="img-rounded">
+                        <br>
+                        <h3>Burak Kırımlı</h3>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <img src="https://i.pinimg.com/originals/d5/96/fb/d596fb4ed0d5940d1a32e27c28fd8f3f.jpg"
+                            alt="Ali" height="500" width="400" class="img-rounded">
+                        <br>
+                        <h3>Ali Can Zeybek</h3>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <img src="https://www.resimci.org/images/2015/03/05/b575ab1b84d0c7c828e72a2b84676f0d.jpg"
+                            alt="Mert" height="500" width="400" class="img-rounded">
+                        <br>
+                        <h3>Mert Saraç</h3>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid" id="contact" style="display: none;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Burak Kırımlı</div>
+                    <div class="panel-body">burak.kirimli@ug.bilkent.edu.tr</div>
+                </div>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">Ali Can Zeybek</div>
+                    <div class="panel-body">can.zeybek@ug.bilkent.edu.tr</div>
+                </div>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">Mert Saraç</div>
+                    <div class="panel-body">mert.sarac@ug.bilkent.edu.tr</div>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function sign() {
+            document.getElementById("home-page").style.display = "none";
+            document.getElementById("log-in-form").style.display = "none";
+            document.getElementById("sign-up-form").style.display = "inline-block";
+            document.getElementById("about-us").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+        }
+        function log() {
+            document.getElementById("log-in-form").style.display = "inline-block";
+            document.getElementById("sign-up-form").style.display = "none";
+            document.getElementById("home-page").style.display = "none";
+            document.getElementById("about-us").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+        }
+        function home() {
+            document.getElementById("log-in-form").style.display = "none";
+            document.getElementById("sign-up-form").style.display = "none";
+            document.getElementById("home-page").style.display = "inline-block";
+            document.getElementById("about-us").style.display = "none";
+            document.getElementById("contact").style.display = "none";
+        }
+        function aboutUs() {
+            document.getElementById("log-in-form").style.display = "none";
+            document.getElementById("sign-up-form").style.display = "none";
+            document.getElementById("home-page").style.display = "none";
+            document.getElementById("about-us").style.display = "block";
+            document.getElementById("contact").style.display = "none";
+        }
+        function contact() {
+            document.getElementById("log-in-form").style.display = "none";
+            document.getElementById("sign-up-form").style.display = "none";
+            document.getElementById("home-page").style.display = "none";
+            document.getElementById("about-us").style.display = "none";
+            document.getElementById("contact").style.display = "block";
+        }
+        async function checkLogin() {
+            if (document.getElementById("username-login").value == "" || document.getElementById("password-login").value == "") {
+                alert("Please fill the form completely!");
+            } else {
+                console.log("Success");
+                var toSendAuth = new Object();
+                var token;
+                var lastToken;
+                var loginStatus;
+                toSendAuth.username = document.getElementById("username-login").value;
+                toSendAuth.password = document.getElementById("password-login").value;
+                var respObj = new Object();
+                let response = await fetch('http://localhost:9100/authxxx', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        'Authentication': 'Bearer' + token
+                    },
+                    body: JSON.stringify(toSendAuth)
+
+                }).then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        respObj = data;
+                        lastToken = data.jtw;
+                        loginStatus = data.status;
+                    });
+
+                var decoded = JSON.parse(atob(lastToken.split('.')[1]))
+                var tokenUserType = decoded.role;
+
+                console.log("Your token is: " + lastToken);
+                if (lastToken == undefined) {
+                    console.log("your token is undefined maan!");
+                    alert("Invalid username & password combination!");
+                } else {
+                    if (tokenUserType == "user") {
+                        window.location.href = "user.html?mytoken=" + lastToken;
+                    } else if (tokenUserType == "admin") {
+                        window.location.href = "admin.html?mytoken=" + lastToken;
+                    }
+                    console.log("You can log in bro.");
+                    //redirect inside
+
+                }
+            }
+        }
+        async function checkSignup() {
+            if (document.getElementById("username-signup").value == "" || document.getElementById("password-signup").value == "" || document.getElementById("password-signup-again").value == "") {
+                alert("Please fill the form completely!");
+            } else {
+                if (document.getElementById("password-signup").value == document.getElementById("password-signup-again").value) {
+                    console.log("Success");
+                    var toSend = new Object();
+                    toSend.username = document.getElementById("username-signup").value;
+                    toSend.password = document.getElementById("password-signup").value;
+                    var respObj = new Object();
+                    let response = await fetch('http://localhost:14500/registration', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        },
+                        body: JSON.stringify(toSend)
+
+                    })/*.then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            respObj = data;
+                        });*/
+
+                    console.log(response);
+                    log();
+                } else {
+                    alert("Password areas didn't match!");
+                }
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
