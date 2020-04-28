@@ -199,7 +199,7 @@
             document.getElementById("short-link-result").innerHTML = "team5.com/" + document.getElementById("shortUrl").value;
             var toSend = new Object();
             toSend.longUrl = document.getElementById("fullUrl").value;
-            toSend.shortUrl = 'team5.com/' + document.getElementById("shortUrl").value;
+            toSend.shortUrl = document.getElementById("shortUrl").value;
             toSend.daysToBeAllive = document.getElementById("expDays").value;
             var respObj = new Object();
             var tokenShowLast = getUrlVars()["mytoken"];
