@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminstatisticsservice
+  labels:
+    app: adminstatisticsservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adminstatisticsservice
+  template:
+    metadata:
+      labels:
+        app: adminstatisticsservice
+    spec:
+      containers:
+      - name: adminstatisticsservice
+        image: alicanzeybek/adminstatisticsservice:1.0
+        ports:
+        - containerPort: 14035
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: "/actuator/info"
+            port: 14035
+            scheme: "HTTP"
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 10
+        readinessProbe:
+          failureThreshold: 3
+          httpGet: 
+            path: "/actuator/health"
+            port: 14035
+            scheme: "HTTP"
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adminstatisticsservice
+  labels:
+    app: adminstatisticsservice
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 14035
+    protocol: TCP
+  selector:
+    app: adminstatisticsservice
+  type: ClusterIP

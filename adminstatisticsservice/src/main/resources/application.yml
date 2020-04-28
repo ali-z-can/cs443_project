@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: adminstatisticsservice
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 14035
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,info,health
