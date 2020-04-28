@@ -15,9 +15,6 @@ public class UserpastlinkanalyticsretrievalserviceApplication {
 		SpringApplication.run(UserpastlinkanalyticsretrievalserviceApplication.class, args);
 	}
 
-	@Bean
-	public Sampler defaultSampler(){
-		return Sampler.ALWAYS_SAMPLE;
-	}
+
 
 }
