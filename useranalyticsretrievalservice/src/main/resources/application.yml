@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: useranalyticsservice
+    main:
+        allow-bean-definition-overriding: true
+
+server:
+    port: 14000
+
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        prometheus:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: prometheus,info,health
+    metrics:
+        export:
+            prometheus:
+                enabled: true
