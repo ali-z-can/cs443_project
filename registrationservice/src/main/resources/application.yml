@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: registrationservice
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+    datasource:
+        driver-class-name: org.mariadb.jdbc.Driver
+
+server:
+    port: 14500
+
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        prometheus:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: prometheus,info,health
