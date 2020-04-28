@@ -39,7 +39,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 // Any other request must be authenticated
                 .antMatchers("/user").authenticated()
                 .antMatchers("/admin-statistics-service/admin/**").hasRole("ADMIN")
-
+                //admins should have ROLE_ADMIN
                 .anyRequest().authenticated();
 
     }
