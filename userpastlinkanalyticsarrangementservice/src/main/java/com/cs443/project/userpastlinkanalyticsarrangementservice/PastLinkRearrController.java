@@ -1,6 +1,7 @@
 package com.cs443.project.userpastlinkanalyticsarrangementservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class PastLinkRearrController {
     UserRepository userRepository;
 
 
+    @CrossOrigin
     @GetMapping("/rearrangement/user/{userID}/numberOfClicks/{numberOfClicks}")
     public boolean rearrange(@PathVariable Long userID,@PathVariable int numberOfClicks){
 

@@ -11,6 +11,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
+    
 server:
   port: 14100
 
