@@ -2,10 +2,7 @@ package com.cs443.project.linkanalyticsservice;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -15,6 +12,7 @@ public class LinkAnalyticsController {
     @Autowired
     LinkRepository repository;
 
+    @CrossOrigin
     @GetMapping("link-click-increment/link/{linkId}")
     public Link increment(@PathVariable Long linkId){
 

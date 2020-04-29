@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 @EnableDiscoveryClient
-@EnableFeignClients("com.cs443.project.redirectionservice")
+@EnableFeignClients
 @SpringBootApplication
 public class RedirectionserviceApplication {
 

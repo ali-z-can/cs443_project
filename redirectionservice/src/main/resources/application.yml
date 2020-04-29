@@ -1,0 +1,23 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: redirectionservice
+    
+    main:
+        allow-bean-definition-overriding: true
+    cloud: 
+      kubernetes:
+        enabled: true
+        discovery:
+            all-namespaces: true
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        prometheus:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: prometheus,info,health

@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linkdeletionservice
+  labels:
+    app: linkdeletionservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: linkdeletionservice
+  template:
+    metadata:
+      labels:
+        app: linkdeletionservice
+    spec:
+      containers:
+        - name: linkdeletionservice
+          image: alicanzeybek/linkdeletionservice:1.0
+          ports:
+            - containerPort: 14400
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: "/actuator/info"
+              port: 14400
+              scheme: "HTTP"
+            initialDelaySeconds: 25
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: "/actuator/health"
+              port: 14400
+              scheme: "HTTP"
+            initialDelaySeconds: 25
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkdeletionservice
+  labels:
+    app: linkdeletionservice
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 14400
+    protocol: TCP
+  selector:
+    app: linkdeletionservice
+  type: ClusterIP
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: linkdeletionservice
+data:
+  application.yml: |-
+    spring.datasource.url: jdbc:mariadb://mariadb/cs443
+    spring.datasource.username: root
+    spring.datasource.password: UOZmH5SD63

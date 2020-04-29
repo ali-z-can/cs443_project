@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflixzuulapigatewayserver
+  labels:
+    app: netflixzuulapigatewayserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netflixzuulapigatewayserver
+  template:
+    metadata:
+      labels:
+        app: netflixzuulapigatewayserver
+    spec:
+      containers:
+      - name: netflixzuulapigatewayserver
+        image: alicanzeybek/netflixzuulapigatewayserver:1.0
+        ports:
+        - containerPort: 8765
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: "/actuator/info"
+            port: 8765
+            scheme: "HTTP"
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 10
+        readinessProbe:
+          failureThreshold: 3
+          httpGet: 
+            path: "/actuator/health"
+            port: 8765
+            scheme: "HTTP"
+          initialDelaySeconds: 25
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: netflixzuulapigatewayserver
+  labels:
+    app: netflixzuulapigatewayserver
+    spring-boot: "true"
+spec:
+  ports:
+  - port: 8765
+    protocol: TCP
+  selector:
+    app: netflixzuulapigatewayserver
+  type: NodePort
