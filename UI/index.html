@@ -255,7 +255,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
-                        'Authentication': 'Bearer' + token
+                        'Authorization': 'Bearer ' + token
                     },
                     body: JSON.stringify(toSendAuth)
 
@@ -303,11 +303,13 @@
                         },
                         body: JSON.stringify(toSend)
 
-                    })/*.then(response => response.json())
+                    }).then(response => response.json())
                         .then(data => {
                             console.log(data);
                             respObj = data;
-                        });*/
+                            loginStatus = data.status;
+                            console.log("status: " + loginStatus);
+                        });
 
                     console.log(response);
                     log();
