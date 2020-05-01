@@ -107,8 +107,16 @@
             document.getElementById("intro").style.display = "none";
             document.getElementById("admin-analytics").style.display = "block";
 
-            let url = 'http://localhost:14035/admin/getStats';
-            let response = await fetch(url);
+            var tokenShowLast = getUrlVars()["mytoken"];
+
+            let url = 'http://34.102.164.249:80/adminstatisticsservice/admin/getStats';
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authentication': 'Bearer' + tokenShowLast
+                },
+            });
 
             let adminSystemAnalytics = await response.json(); // read response body and parse as JSON
 

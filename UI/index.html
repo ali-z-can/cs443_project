@@ -250,7 +250,8 @@
                 toSendAuth.username = document.getElementById("username-login").value;
                 toSendAuth.password = document.getElementById("password-login").value;
                 var respObj = new Object();
-                let response = await fetch('http://localhost:9100/authxxx', {
+                //http://34.102.164.249:80/authservice/authxxx
+                let response = await fetch('http://34.102.164.249:80/authservice/authxxx', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
@@ -295,7 +296,7 @@
                     toSend.username = document.getElementById("username-signup").value;
                     toSend.password = document.getElementById("password-signup").value;
                     var respObj = new Object();
-                    let response = await fetch('http://localhost:14500/registration', {
+                    let response = await fetch('http://34.102.164.249:80/registrationservice/registration', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8'

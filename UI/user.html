@@ -206,8 +206,7 @@
             var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
             var tokenUserId = decoded.id;
             console.log("your user id is: " + tokenUserId);
-            //user id kısmını manual olarak 1 girdim, o değişecek
-            let response = await fetch('http://localhost:8100/user/' + tokenUserId + '/link-storage', {
+            let response = await fetch('http://34.102.164.249:80/linkstoreservice/user/' + tokenUserId + '/link-storage', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
@@ -244,7 +243,7 @@
                 tableReset.deleteRow(1);
             }
 
-            let url = 'http://localhost:8000/links-retrieval/user/' + tokenUserId;
+            let url = 'http://34.102.164.249:80/linkretrievalservice/links-retrieval/user/' + tokenUserId;
             let response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -286,7 +285,7 @@
             var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
             var tokenUserId = decoded.id;
 
-            let url = 'http://localhost:8000/links-retrieval/user/' + tokenUserId;
+            let url = 'http://34.102.164.249:80/linkretrievalservice/links-retrieval/user/' + tokenUserId;
             let response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -302,7 +301,7 @@
                 currentClickNumber = currentClickNumber + myLinksArrayAnalytics[i].numberOfClicks;
             }
 
-            let url2 = 'http://localhost:14000/user/' + tokenUserId + '/user-analytics';
+            let url2 = 'http://34.102.164.249:80/useranalyticsservice/user/' + tokenUserId + '/user-analytics';
             let response2 = await fetch(url2, {
                 method: 'GET',
                 headers: {
@@ -319,39 +318,6 @@
             document.getElementById("number-of-accesses-currently").innerHTML = currentClickNumber;
             document.getElementById("number-of-links").innerHTML = analytics.userPastLinkAnalyticsBean.getNumberOfDistinctLinks + currentLinkNumber;
             document.getElementById("number-of-accesses").innerHTML = analytics.userPastLinkAnalyticsBean.numberOfClicks + currentClickNumber;
-        }
-        async function checkSignup() {
-            if (document.getElementById("username-signup").value == "" || document.getElementById("password-signup").value == "" || document.getElementById("password-signup-again").value == "") {
-                alert("Please fill the form completely!");
-            } else {
-                if (document.getElementById("password-signup").value == document.getElementById("password-signup-again").value) {
-                    console.log("Success");
-                    var toSend = new Object();
-                    toSend.username = document.getElementById("username-signup").value;
-                    toSend.password = document.getElementById("password-signup").value;
-                    var respObj = new Object();
-                    let response = await fetch('http://localhost:14500/registration', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json;charset=utf-8'
-                        },
-                        body: JSON.stringify(toSend)
-
-                    }).then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            respObj = data;
-                        });
-
-                    console.log(respObj.userId);
-                } else {
-                    alert("Password areas didn't match!");
-                }
-            }
-        }
-
-        function logOut() {
-            window.location.href = "index.html";
         }
 
     </script>
