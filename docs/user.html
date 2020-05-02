@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Team Number 5</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://www.kidsmathgamesonline.com/images/pictures/numbers600/number5.jpg"
+                    alt="Team Number 5" height="250px" width="250px">
+            </div>
+            <div class="col-md-8">
+                <h1 style="font-size: 55px; font-family: 'Times New Roman'; color:darkolivegreen;"><strong>CS443 Cloud
+                        Computing and Mobile Applications</strong></h1>
+                <h2 style="font-family:Cambria; font-size:40px; color:darkolivegreen;">Team 5</h2>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+    <hr class="solid">
+
+    <nav class="navbar navbar-dark bg-success">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" onclick="home();">
+                    <strong>
+                        <p style="font-size: large;">TEAM5</p>
+                    </strong>
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="color: firebrick;" onclick="shortenerTab();">
+                        <p style="font-size: large;">Shortener</p>
+                    </a></li>
+                <li><a href="#" style="color:firebrick;" onclick="myLinksTab();">
+                        <p style="font-size: large;">My Links</p>
+                    </a></li>
+                <li><a href="#" style="color: firebrick;" onclick="analyticsTab();">
+                        <p style="font-size: large;">Analytics</p>
+                    </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><button type="button" class="btn btn-danger btn-lg" onclick="logOut();" <span
+                        class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="shortener">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form>
+                    <h2>Enter the URL that you want to shorten:</h2>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+                        <label class="sr-only" style="display: none;">Url</label>
+                        <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control">
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-info" onclick="shortenLink();">Random Link Generator</button>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3>Enter if you want to choose the custom shortened link(optional):</h3>
+                            <div class="input-group">
+                                <label>team5.com/</label>
+                                <input required type="text" name="shortUrl" id="shortUrl" class="form-control" value=""
+                                    minlength="6" maxlength="8">
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <label for="expDays">Expire in(days): </label>
+                                <input required type="number" name="expDays" id="expDays" class="form-control"
+                                    aria-valuemin="1">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-success" type="button" onclick="submitCheck();">Submit Link</button>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Your short link:</div>
+                        <div class="panel-body">
+                            <p id="short-link-result"></p>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <br>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="my-links" style="display: none;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table class="table" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Original Link</th>
+                            <th>Short Link</th>
+                            <th>Number of Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTableBody"></tbody>
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="user-analytics" style="display: none;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2>Current Analytics</h2>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of currently active links that you created:</div>
+                    <div class="panel-body">
+                        <p id="number-of-links-currently" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of clicks to the currently active links you created:
+                    </div>
+                    <div class="panel-body">
+                        <p id="number-of-accesses-currently" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+                <h2>General Analytics</h2>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of the links you created(in general):</div>
+                    <div class="panel-body">
+                        <p id="number-of-links" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of clicks to the links you created(in general):</div>
+                    <div class="panel-body">
+                        <p id="number-of-accesses" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+    <script>
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        function tokenShow() {
+            var tokenShowLast = getUrlVars()["mytoken"];
+            console.log(tokenShowLast);
+        }
+
+        var totalNumberOfAccesses = 0;
+        var totalNumberOfLinks = 0;
+
+        function shortenLink() {
+            var output = '';
+            var characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (var i = 0; i < 6; i++) {
+                output += characters.charAt(Math.floor(Math.random() * 62));
+            }
+            document.getElementById("shortUrl").value = output;
+        }
+        async function submitCheck() {
+
+            document.getElementById("short-link-result").innerHTML = "team5.com/" + document.getElementById("shortUrl").value;
+            var toSend = new Object();
+            toSend.longUrl = document.getElementById("fullUrl").value;
+            toSend.shortUrl = document.getElementById("shortUrl").value;
+            toSend.daysToBeAllive = document.getElementById("expDays").value;
+            var respObj = new Object();
+            var tokenShowLast = getUrlVars()["mytoken"];
+            var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
+            var tokenUserId = decoded.id;
+            console.log("your user id is: " + tokenUserId);
+            let response = await fetch('http://34.102.164.249:80/linkstoreservice/user/' + tokenUserId + '/link-storage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authorization': 'Bearer ' + tokenShowLast
+                },
+                body: JSON.stringify(toSend)
+
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    respObj = data;
+                });
+
+            console.log(respObj.userId);
+            myLinksTab();
+
+        }
+        function shortenerTab() {
+            document.getElementById("shortener").style.display = "block";
+            document.getElementById("my-links").style.display = "none";
+            document.getElementById("user-analytics").style.display = "none";
+        }
+        async function myLinksTab() {
+            document.getElementById("shortener").style.display = "none";
+            document.getElementById("my-links").style.display = "block";
+            document.getElementById("user-analytics").style.display = "none";
+
+            var tokenShowLast = getUrlVars()["mytoken"];
+            var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
+            var tokenUserId = decoded.id;
+
+            var tableReset = document.getElementById('myTable');
+            while (tableReset.rows.length > 1) {
+                tableReset.deleteRow(1);
+            }
+
+            let url = 'http://34.102.164.249:80/linkretrievalservice/links-retrieval/user/' + tokenUserId;
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authorization': 'Bearer ' + tokenShowLast
+                },
+            });
+
+            let myLinksArray = await response.json(); // read response body and parse as JSON
+
+            for (var i = 0; i < myLinksArray.length; i++) {
+
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(1);
+                var originalLink = row.insertCell(0);
+                var shortLink = row.insertCell(1);
+                var clickNumber = row.insertCell(2);
+                originalLink.innerHTML = "<a>" + myLinksArray[i].longUrl + "</a>";
+                shortLink.innerHTML = "<a>" + myLinksArray[i].shortUrl + "</a>";
+                clickNumber.innerHTML = myLinksArray[i].numberOfClicks;
+            }
+
+            console.log("Successful!");
+
+        }
+
+        function redirection(redirectionUrl) {
+            window.location.href = redirectionUrl;
+        }
+        async function analyticsTab() {
+            document.getElementById("shortener").style.display = "none";
+            document.getElementById("user-analytics").style.display = "block";
+            document.getElementById("my-links").style.display = "none";
+
+            var currentLinkNumber = 0;
+            var currentClickNumber = 0;
+
+            var tokenShowLast = getUrlVars()["mytoken"];
+            var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
+            var tokenUserId = decoded.id;
+
+            let url = 'http://34.102.164.249:80/linkretrievalservice/links-retrieval/user/' + tokenUserId;
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authorization': 'Bearer ' + tokenShowLast
+                },
+            });
+
+            let myLinksArrayAnalytics = await response.json(); // read response body and parse as JSON
+
+            currentLinkNumber = myLinksArrayAnalytics.length;
+            for (var i = 0; i < myLinksArrayAnalytics.length; i++) {
+                currentClickNumber = currentClickNumber + myLinksArrayAnalytics[i].numberOfClicks;
+            }
+
+            let url2 = 'http://34.102.164.249:80/useranalyticsservice/user/' + tokenUserId + '/user-analytics';
+            let response2 = await fetch(url2, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authorization': 'Bearer ' + tokenShowLast
+                },
+            });
+
+            let analytics = await response2.json(); // read response body and parse as JSON
+
+            console.log(analytics);
+
+            document.getElementById("number-of-links-currently").innerHTML = currentLinkNumber;
+            document.getElementById("number-of-accesses-currently").innerHTML = currentClickNumber;
+            document.getElementById("number-of-links").innerHTML = analytics.userPastLinkAnalyticsBean.getNumberOfDistinctLinks + currentLinkNumber;
+            document.getElementById("number-of-accesses").innerHTML = analytics.userPastLinkAnalyticsBean.numberOfClicks + currentClickNumber;
+        }
+
+    </script>
+
+</body>
+
+</html>

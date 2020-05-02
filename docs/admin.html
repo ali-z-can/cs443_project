@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Team Number 5</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://www.kidsmathgamesonline.com/images/pictures/numbers600/number5.jpg"
+                    alt="Team Number 5" height="250px" width="250px">
+            </div>
+            <div class="col-md-8">
+                <h1 style="font-size: 55px; font-family: 'Times New Roman'; color:darkolivegreen;"><strong>CS443 Cloud
+                        Computing and Mobile Applications</strong></h1>
+                <h2 style="font-family:Cambria; font-size:40px; color:darkolivegreen;">Team 5</h2>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+    <hr class="solid">
+
+    <nav class="navbar navbar-dark bg-success">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" onclick="home();">
+                    <strong>
+                        <p style="font-size: large;">TEAM5</p>
+                    </strong>
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="color: firebrick;" onclick="introTab();">
+                        <p style="font-size: large;">Home</p>
+                    </a></li>
+                <li><a href="#" style="color:firebrick;" onclick="showAdminAnalytics();">
+                        <p style="font-size: large;">Analytics</p>
+                    </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><button type="button" class="btn btn-danger btn-lg" onclick="logOut();" <span
+                        class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="intro">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2>Hello Mr./Mrs. Admin!</h2>
+                <br>
+                <h2>In this panel you can see system wise analytics.</h2>
+                <br>
+                <h2>This project is implemented by Team5.</h2>
+                <br>
+                <h2>Team members: Burak Kırımlı, Ali Can Zeybek, Mert Saraç</h2>
+                <br>
+                <h3>To see the analytics, please, press the button below.</h3>
+                <br>
+                <button type="button" class="btn btn-warning btn-lg" onclick="showAdminAnalytics();">Show System
+                    Anaytics</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="admin-analytics" style="display: none;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2>Current Analytics</h2>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of users:</div>
+                    <div class="panel-body">
+                        <p id="number-of-user" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading">The total number of links:
+                    </div>
+                    <div class="panel-body">
+                        <p id="number-of-link-system" style="font-size: large; font-weight:bold;"></p>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+    <script>
+
+        async function showAdminAnalytics() {
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("admin-analytics").style.display = "block";
+
+            var tokenShowLast = getUrlVars()["mytoken"];
+
+            let url = 'http://34.102.164.249:80/adminstatisticsservice/admin/getStats';
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'Authorization': 'Bearer' + tokenShowLast
+                },
+            });
+
+            let adminSystemAnalytics = await response.json(); // read response body and parse as JSON
+
+            document.getElementById("number-of-user").innerHTML = adminSystemAnalytics.toSendUser.numberOfUser;
+            document.getElementById("number-of-link-system").innerHTML = adminSystemAnalytics.toRetLink.links;
+        }
+
+        function introTab() {
+            document.getElementById("intro").style.display = "block";
+            document.getElementById("admin-analytics").style.display = "none";
+        }
+
+        function logOut() {
+            window.location.href = "index.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
