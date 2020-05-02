@@ -1,1 +1,0 @@
-insert into User (user_id,username,password,number_of_clicks,number_of_distinct_links) values (1,'kıllınecmi','pass',45,90)
