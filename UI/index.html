@@ -296,6 +296,7 @@
                     toSend.username = document.getElementById("username-signup").value;
                     toSend.password = document.getElementById("password-signup").value;
                     var respObj = new Object();
+                    var resStatus;
                     let response = await fetch('http://34.102.164.249:80/registrationservice/registration', {
                         method: 'POST',
                         headers: {
@@ -303,15 +304,24 @@
                         },
                         body: JSON.stringify(toSend)
 
-                    }).then(response => response.json())
+                    }).then(function (response) {
+                        console.log(response.status);
+                        resStatus = response.status;
+                    })
+                    /*.then(response => response.json())
                         .then(data => {
                             console.log(data);
                             respObj = data;
                             loginStatus = data.status;
-                            console.log("status: " + loginStatus);
-                        });
+                            console.log( "Response status is : " +data.status);
+                            //console.log("status: " + loginStatus);
+                        });*/
 
-                    console.log(response);
+                    
+                    if(resStatus == 504) {
+                        checkSignup();
+                    }
+                    
                     log();
                 } else {
                     alert("Password areas didn't match!");

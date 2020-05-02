@@ -120,6 +120,10 @@
 
             let adminSystemAnalytics = await response.json(); // read response body and parse as JSON
 
+            if(response.status == 504){
+                showAdminAnalytics();
+            }
+
             document.getElementById("number-of-user").innerHTML = adminSystemAnalytics.toSendUser.numberOfUser;
             document.getElementById("number-of-link-system").innerHTML = adminSystemAnalytics.toRetLink.links;
         }

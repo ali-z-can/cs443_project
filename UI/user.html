@@ -206,6 +206,7 @@
             //console.log("Your token is : " + tokenShowLast);
             var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
             var tokenUserId = decoded.id;
+            var resStatus;
             console.log("your user id is: " + tokenUserId);
             let response = await fetch('http://34.102.164.249:80/linkstoreservice/user/' + tokenUserId + '/link-storage', {
                 method: 'POST',
@@ -215,13 +216,24 @@
                 }),
                 body: JSON.stringify(toSend)
 
-            }).then(response => response.json())
+            }).then(function (response) {
+                console.log(response.status);
+                resStatus = response.status;
+            })
+            /*.then(response => response.json())
                 .then(data => {
                     console.log(data);
                     respObj = data;
-                });
+                    loginStatus = data.status;
+                    console.log( "Response status is : " +data.status);
+                    //console.log("status: " + loginStatus);
+                });*/
 
-            console.log(respObj.userId);
+            
+            if(resStatus == 504) {
+                submitCheck();
+            }
+
             myLinksTab();
 
         }
@@ -254,6 +266,11 @@
             });
 
             let myLinksArray = await response.json(); // read response body and parse as JSON
+            console.log("status: " + response.status);
+
+            if(response.status == 504){
+                myLinksTab();
+            }
 
             for (var i = 0; i < myLinksArray.length; i++) {
 
@@ -297,6 +314,10 @@
 
             let myLinksArrayAnalytics = await response.json(); // read response body and parse as JSON
 
+            if(response.status == 504){
+                analyticsTab();
+            }
+
             currentLinkNumber = myLinksArrayAnalytics.length;
             for (var i = 0; i < myLinksArrayAnalytics.length; i++) {
                 currentClickNumber = currentClickNumber + myLinksArrayAnalytics[i].numberOfClicks;
@@ -312,6 +333,10 @@
             });
 
             let analytics = await response2.json(); // read response body and parse as JSON
+
+            if(response.status == 504){
+                analyticsTab();
+            }
 
             console.log(analytics);
 
