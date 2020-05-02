@@ -203,15 +203,16 @@
             toSend.daysToBeAllive = document.getElementById("expDays").value;
             var respObj = new Object();
             var tokenShowLast = getUrlVars()["mytoken"];
+            //console.log("Your token is : " + tokenShowLast);
             var decoded = JSON.parse(atob(tokenShowLast.split('.')[1]))
             var tokenUserId = decoded.id;
             console.log("your user id is: " + tokenUserId);
             let response = await fetch('http://34.102.164.249:80/linkstoreservice/user/' + tokenUserId + '/link-storage', {
                 method: 'POST',
-                headers: {
+                headers: new Headers({
                     'Content-Type': 'application/json;charset=utf-8',
                     'Authorization': 'Bearer ' + tokenShowLast
-                },
+                }),
                 body: JSON.stringify(toSend)
 
             }).then(response => response.json())
@@ -318,6 +319,10 @@
             document.getElementById("number-of-accesses-currently").innerHTML = currentClickNumber;
             document.getElementById("number-of-links").innerHTML = analytics.userPastLinkAnalyticsBean.getNumberOfDistinctLinks + currentLinkNumber;
             document.getElementById("number-of-accesses").innerHTML = analytics.userPastLinkAnalyticsBean.numberOfClicks + currentClickNumber;
+        }
+
+        function logOut(){
+            window.location.href = "index.html";
         }
 
     </script>
