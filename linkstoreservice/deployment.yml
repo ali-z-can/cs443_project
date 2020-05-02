@@ -63,4 +63,4 @@ data:
   application.yml: |-
     spring.datasource.url: jdbc:mariadb://vested-poodle-mariadb/cs443
     spring.datasource.username: root
-    spring.datasource.password: UOZmH5SD63
+    spring.datasource.password: nedJmb6AVL
