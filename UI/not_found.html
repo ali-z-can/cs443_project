@@ -12,42 +12,9 @@
 </body>
 <script>
     async function redirecting() {
-        let redirectLink = window.location.href.split("http://cs443-team5.club/").join("");
-        console.log(redirectLink);
-
-        let resStatus;
-
-        let url = 'http://34.102.164.249:80/redirectionservice/' + redirectLink;
-
-
-        let response = await fetch('http://34.102.164.249:80/redirectionservice/' + redirectLink, {
-            method: 'GET',
-            mode: "no-cors",
-            headers: new Headers({
-                'Content-Type': 'application/json;charset=utf-8'
-            }),
-
-        }).then(function (response) {
-            console.log(response.status);
-            resStatus = response.status;
-        })
-
-
-        if (resStatus == 500) {
-            window.alert("Invalid short link!");
-            window.location.replace("http://cs443-team5.club/");
-        } else {
-            window.location.replace(url);
-        }
-
-
-
-
-        if (resStatus == 500) {
-            console.log("You got it!");
-        }
-
-        console.log(resultRedirect);
+    let redirectLink = window.location.href.split("http://cs443-team5.club/").join("");
+    window.location = 'http://34.102.164.249:80/redirectionservice/' + redirectLink;
+    
     }
 </script>
 
