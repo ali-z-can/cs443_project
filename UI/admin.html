@@ -95,15 +95,118 @@
                     </div>
                 </div>
                 <br>
+                <h3><strong style="color: brown;"> Grafana Username: admin , Password: prom-operator</strong></h3>
+                <br>
             </div>
             <div class="col-md-4"></div>
         </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <h3>Kubernetes/Compute Resources/Namespace(Pods) Analytics</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CPU Usage</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=10s&from=1588618271072&to=1588621871072&var-datasource=default&var-cluster=&var-namespace=default&panelId=5&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>CPU Quota</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=10s&from=1588618288015&to=1588621888015&var-datasource=default&var-cluster=&var-namespace=default&panelId=6&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>Memory Usage(w/o cache)</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=10s&from=1588618319406&to=1588621919406&var-datasource=default&var-cluster=&var-namespace=default&panelId=7&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>Memory Quota</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=10s&from=1588618352097&to=1588621952097&var-datasource=default&var-cluster=&var-namespace=default&panelId=8&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>Receive Bandwidth</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&refresh=10s&from=1588618376801&to=1588621976801&var-datasource=default&var-cluster=&var-namespace=default&panelId=10&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <h3>Kubernetes/Compute Resources/Cluster Analytics</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CPU Usage</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/efa86fd1d0c121a26444b636a3f509a8/kubernetes-compute-resources-cluster?orgId=1&refresh=10s&from=1588618156142&to=1588621756142&var-datasource=default&var-cluster=&panelId=7&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>CPU Quota</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/efa86fd1d0c121a26444b636a3f509a8/kubernetes-compute-resources-cluster?orgId=1&refresh=10s&from=1588618172552&to=1588621772552&var-datasource=default&var-cluster=&panelId=8&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h3>Nodes Analytics</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Load Average</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/fa49a4706d07a042595b664c87fb33ea/nodes?orgId=1&from=1588612635554&to=1588624441970&var-datasource=Prometheus&var-instance=10.172.0.3:9100&panelId=3&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                            <tr>
+                                <td>Memory Usage</td>
+                                <td><a
+                                        href="http://34.65.27.184/d/fa49a4706d07a042595b664c87fb33ea/nodes?orgId=1&from=1588612635554&to=1588624441970&var-datasource=Prometheus&var-instance=10.172.0.3:9100&panelId=4&fullscreen">Click
+                                        here to see analytics...</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
+
     <script>
-		
-		function getUrlVars() {
+
+        function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
                 vars[key] = value;
@@ -128,7 +231,7 @@
 
             let adminSystemAnalytics = await response.json(); // read response body and parse as JSON
 
-            if(response.status == 504){
+            if (response.status == 504) {
                 showAdminAnalytics();
             }
 
