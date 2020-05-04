@@ -73,7 +73,7 @@
                         <div class="col-md-5">
                             <h3>Enter if you want to choose the custom shortened link(optional):</h3>
                             <div class="input-group">
-                                <label>team5.com/</label>
+                                <label>cs443-team5.club/</label>
                                 <input required type="text" name="shortUrl" id="shortUrl" class="form-control" value=""
                                     minlength="6" maxlength="8">
                             </div>
@@ -196,7 +196,7 @@
         }
         async function submitCheck() {
 
-            document.getElementById("short-link-result").innerHTML = "team5.com/" + document.getElementById("shortUrl").value;
+            document.getElementById("short-link-result").innerHTML = "cs443-team5.club/" + document.getElementById("shortUrl").value;
             var toSend = new Object();
             toSend.longUrl = document.getElementById("fullUrl").value;
             toSend.shortUrl = document.getElementById("shortUrl").value;
@@ -279,8 +279,8 @@
                 var originalLink = row.insertCell(0);
                 var shortLink = row.insertCell(1);
                 var clickNumber = row.insertCell(2);
-                originalLink.innerHTML = "<a>" + myLinksArray[i].longUrl + "</a>";
-                shortLink.innerHTML = "<a>" + myLinksArray[i].shortUrl + "</a>";
+                originalLink.innerHTML = "<a href= "+ myLinksArray[i].longUrl + ">" + myLinksArray[i].longUrl + "</a>";
+                shortLink.innerHTML = "<a href = \"http://34.102.164.249:80/redirectionservice/\"" + myLinksArray[i].shortUrl + ">" + myLinksArray[i].shortUrl + "</a>";
                 clickNumber.innerHTML = myLinksArray[i].numberOfClicks;
             }
 
